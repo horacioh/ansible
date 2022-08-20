@@ -1,0 +1,62 @@
+- hosts: localhost
+  vars:
+    brew_cask_packages:
+      - 1password
+      - hpedrorodrigues/tools/dockutil
+      - macs-fan-control
+      - obs
+      - spotify
+      - telegram
+      - visual-studio-code
+    brew_packages:
+      - git
+      - gh
+      - go
+      - mas
+      - ssh-copy-id
+      - tmux
+      - zsh
+      - zsh-syntax-highlighting
+    # Default applications to install from Mac AppStore
+    packages__mas:
+      - { id: 1475387142, name: "Tailscale" }
+      - { id: 1569813296, name: "1Password for Safari" }
+    install_homebrew_if_missing: false
+    upgrade_homebrew_packages: false
+  #   source_key: "./.ssh/id_rsa"
+  #   dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+  #   personal: "{{ lookup('env', 'HOME') }}/personal"
+  pre_tasks:
+  - name: Ensuring Homebrew Is Installed
+    stat:
+      path: /usr/local/bin/brew
+    register: homebrew_check
+    tags:
+      - install
+      - core
+  - name: Fail If Homebrew Is Not Installed and install_homebrew_if_missing Is False
+    fail:
+      msg: Homebrew is missing, install from http://brew.sh
+    when:
+      - not homebrew_check.stat.exists
+      - not install_homebrew_if_missing
+    tags:
+      - install
+      - core
+  tasks:
+    - include_tasks: tasks/install-apps.yml
+    - include_tasks: tasks/dock-setup.yml
+    # - include_tasks: tasks/ssh.yml
+    # - include_tasks: tasks/git-setup.yml
+    # - include_tasks: tasks/core-setup.yml
+    # - include_tasks: tasks/node-setup.yml
+    # - include_tasks: tasks/npm-packages.yml
+    # - include_tasks: tasks/zsh-setup.yml
+    # - include_tasks: tasks/slack-setup.yml
+    # - include_tasks: tasks/personal-projects.yml
+    # - include_tasks: tasks/nvim-setup.yml
+    # - include_tasks: tasks/brave.yml
+    # - include_tasks: tasks/debugger.yml
+    # - include_tasks: tasks/dotfiles.yml
+    # - include_tasks: tasks/productivity-tools.yml
+    # - include_tasks: tasks/lsp.yml

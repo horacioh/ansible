@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+echo "\n\n=== Uninstall Homebrew\n"
+
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+
+echo "\n\n=== Remove Formulae folders\n"
+sudo rm -rf /usr/local/Homebrew /usr/local/etc /usr/local/share /usr/local/var
+
+echo "\n\n=== XCode Command line tools\n"
+sudo rm -rf /Library/Developer/CommandLineTools
