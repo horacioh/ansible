@@ -17,4 +17,9 @@
 	- zsh
 	- ohmyzsh
 - setup laptop for minter
-- 
+
+## Todos
+
+- setup multiple ssh keys per email:
+	- hi@horacioh.com
+	- horacio@mintter.com

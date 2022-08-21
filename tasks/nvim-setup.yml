@@ -1,0 +1,25 @@
+- name: Get Packer
+  ansible.builtin.git:
+    repo: 'https://github.com/wbthomason/packer.nvim'
+    dest: "{{ lookup('env', 'HOME') }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+  tags:
+    - install
+    - neovim
+- name: Install neovim
+  homebrew:
+    - name: "neovim"
+  tags:
+    - install
+    - neovim
+- name: Neovim Plugin Development 1
+  homebrew:
+    - name: "luarocks"
+  tags:
+    - install
+    - neovim
+- name: Neovim Plugin Development 2 luacheck
+  become: true
+  shell: luarocks install luacheck
+  tags:
+    - install
+    - neovim

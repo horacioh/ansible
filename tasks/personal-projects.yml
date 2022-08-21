@@ -1,0 +1,35 @@
+- name: Personal Project ansible
+  ansible.builtin.git:
+    repo: "git@github.com:horacioh/ansible.git"
+    bare: true
+    dest: "{{ personal }}/ansible"
+  tags:
+    - install
+    - personal-project
+
+- name: Personal Project personal
+  ansible.builtin.git:
+    repo: "git@github.com:horacioh/personal.git"
+    bare: true
+    dest: "{{ personal }}/p"
+  tags:
+    - install
+    - personal-project
+
+- name: Personal Project braindump
+  ansible.builtin.git:
+    repo: "git@github.com:horacioh/braindump.git"
+    bare: true
+    dest: "{{ personal }}/braindump"
+  tags:
+    - install
+    - personal-project
+
+- name: Personal Project talks
+  ansible.builtin.git:
+    repo: "git@github.com:horacioh/talks.git"
+    bare: true
+    dest: "{{ personal }}/talks"
+  tags:
+    - install
+    - personal-project

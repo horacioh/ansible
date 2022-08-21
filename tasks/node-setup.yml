@@ -1,0 +1,43 @@
+- name: Install nodejs and npm
+  homebrew:
+    name: "node"
+  tags:
+    - install
+    - node
+
+- name: npmjs prefix
+  shell: mkdir -p ~/.local/.npm-global
+  tags:
+  - install
+  - node
+
+- name: add npmjs to path
+  shell: PATH=~/.local/.npm-global/bin:$PATH
+  tags:
+  - install
+  - node
+
+- name: npmjs global settings
+  shell: npm config set prefix '~/.local/.npm-global'
+  tags:
+  - install
+  - node
+
+- name: npmjs global settings export path in case I don't have dotfiles installed
+  shell: export PATH=~/.local/.npm-global/bin:$PATH
+  tags:
+  - install
+  - node
+  - npm-path
+
+- name: Install fnm (node manager)
+  shell: HOMEBREW_NO_INSTALL_CLEANUP=1 curl -fsSL https://fnm.vercel.app/install | zsh
+  tags:
+    - install
+    - node
+
+- name: Install correct version of Node
+  shell: fnm install 16
+  tags:
+    - install
+    - node

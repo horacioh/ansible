@@ -1,0 +1,7 @@
+- name: Install Nix
+  shell: sh <(curl -L https://nixos.org/nix/install)
+  become: true
+  tags:
+    - install
+    - dotfiles
+
