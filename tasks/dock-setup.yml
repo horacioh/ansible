@@ -1,2 +1,2 @@
 - name: Remove all item from Dock
-  shell: dockutil --remove all
+  ansible.builtin.shell: dockutil --remove all

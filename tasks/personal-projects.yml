@@ -1,11 +1,11 @@
-- name: Personal Project ansible
-  ansible.builtin.git:
-    repo: "git@github.com:horacioh/ansible.git"
-    bare: true
-    dest: "{{ personal }}/ansible"
-  tags:
-    - install
-    - personal-project
+# - name: Personal Project ansible
+#   ansible.builtin.git:
+#     repo: "git@github.com:horacioh/ansible.git"
+#     bare: true
+#     dest: "{{ personal }}/ansible"
+#   tags:
+#     - install
+#     - personal-project
 
 - name: Personal Project personal
   ansible.builtin.git:

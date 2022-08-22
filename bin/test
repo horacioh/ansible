@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Start setup
+ansible-galaxy collection install -r requirements.yml
+ansible-playbook -i "localhost," -c local local.yml --ask-become-pass --ask-vault-pass

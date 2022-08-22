@@ -1,10 +1,11 @@
+---
 - name: Updating Homebrew
-  homebrew:
+  community.general.homebrew:
     update_homebrew: true
   when: homebrew_check.stat.exists
 
 - name: Upgrading Homebrew Packages
-  homebrew:
+  community.general.homebrew:
     upgrade_all: "{{ upgrade_homebrew_packages }}"
   register: result
   until: result is successful
@@ -19,7 +20,7 @@
   when: homebrew_check.stat.exists
 
 - name: Installing Homebrew Packages
-  homebrew:
+  community.general.homebrew:
     name: "{{ brew_packages }}"
     state: present
   register: result

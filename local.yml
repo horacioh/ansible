@@ -2,6 +2,7 @@
   vars:
     brew_cask_packages:
       - 1password
+      - discord
       - hpedrorodrigues/tools/dockutil
       - macs-fan-control
       - obs
@@ -49,18 +50,19 @@
       - install
       - core
   tasks:
-    # - include_tasks: tasks/ssh.yml
-    # - include_tasks: tasks/git-setup.yml
-    # - include_tasks: tasks/install-apps.yml
-    # - include_tasks: tasks/dock-setup.yml
+    - include_tasks: tasks/ssh.yml
+    - include_tasks: tasks/git-setup.yml
+    - include_tasks: tasks/install-apps.yml
+    - include_tasks: tasks/dock-setup.yml
     - include_tasks: tasks/node-setup.yml
     - include_tasks: tasks/npm-packages.yml
     - include_tasks: tasks/zsh-setup.yml
-    # - include_tasks: tasks/slack-setup.yml
     - include_tasks: tasks/personal-projects.yml
     - include_tasks: tasks/nvim-setup.yml
-    # - include_tasks: tasks/brave.yml
-    # - include_tasks: tasks/debugger.yml
     - include_tasks: tasks/dotfiles.yml
-    # - include_tasks: tasks/productivity-tools.yml
-    # - include_tasks: tasks/lsp.yml
+
+      # - include_tasks: tasks/brave.yml
+      # - include_tasks: tasks/debugger.yml
+      # - include_tasks: tasks/productivity-tools.yml
+      # - include_tasks: tasks/lsp.yml
+      # - include_tasks: tasks/slack-setup.yml

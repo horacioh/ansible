@@ -1,5 +1,5 @@
 - name: Install Nix
-  shell: sh <(curl -L https://nixos.org/nix/install)
+  ansible.builtin.shell: sh <(curl -L https://nixos.org/nix/install)
   become: true
   tags:
     - install

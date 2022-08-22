@@ -1,10 +1,12 @@
 - name: Install git
-  homebrew:
-    name: "git"
+  community.general.homebrew:
+    name: git
+    state: present
 
 - name: Install Github CLI
-  homebrew:
-    name: "gh"
+  community.general.homebrew:
+    name: gh
+    state: present
 
 - name: Git personal setup email
   git_config:

@@ -30,3 +30,5 @@
     user: "{{ lookup('env', 'USER') }}"
     state: present
     key: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_ed25519.pub') }}"
+- name: add key to ssh-agent
+  ansible.builtin.shell: ssh-add -K "{{ dest_key }}"

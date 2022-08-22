@@ -1,26 +1,28 @@
 - name: Install ZSH
-  homebrew:
-    name: "zsh"
+  community.general.homebrew:
+    name: zsh
+    state: present
   tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
 
 - name: Install Zsh Highlight
-  homebrew:
-    name: "zsh-syntax-highlighting"
+  community.general.homebrew:
+    name: zsh-syntax-highlighting
+    state: present
   tags: *tags_for_zsh_tasks
 
 - name: Change shell to zsh
   become: true
-  shell: chsh -s $(which zsh)
+  ansible.builtin.shell: chsh -s $(which zsh)
   tags: *tags_for_zsh_tasks
 
 - name: Check that the .oh-my-zsh exists
   stat:
-    path: "{{ lookup('file', lookup('env', 'HOME') + '/.oh-my-zsh') }}"
+    path: "$HOME/.oh-my-zsh"
   register: oh_my_stats
   tags: *tags_for_zsh_tasks
 
 - name: Oh-My-Zsh
-  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+  ansible.builtin.shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
   tags: *tags_for_zsh_tasks
   when: oh_my_stats.stat.exists == False
   become_user: theprimeagen

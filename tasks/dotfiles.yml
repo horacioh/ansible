@@ -1,14 +1,16 @@
 - name: Installing stow
-  homebrew:
-    - name: "stow"
+  community.general.homebrew:
+    name: stow
+    state: present
   tags:
     - install
     - dotfiles
     - stow
 
 - name: Installing direnv
-  homebrew:
-    - name: "direnv"
+  community.general.homebrew:
+    name: direnv
+    state: present
   tags:
     - install
     - dotfiles
@@ -27,7 +29,7 @@
     - dotfiles
     - stow
 - name: Stow dotfiles
-  shell: cd $HOME/.dotfiles && ./mac
+  ansible.builtin.shell: cd $HOME/.dotfiles && ./mac
   tags:
     - install
     - dotfiles
