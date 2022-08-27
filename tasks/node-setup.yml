@@ -42,3 +42,10 @@
   tags:
     - install
     - node
+- name: Installing pnpm
+  community.general.homebrew:
+    name: pnpm
+    state: present
+  tags:
+    - install
+    - node
